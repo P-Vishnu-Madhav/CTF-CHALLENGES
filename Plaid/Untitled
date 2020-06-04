@@ -1,0 +1,45 @@
+uint64_t fcn.00400702(int64_t arg1)
+{
+    char cVar1;
+    char *in_RAX;
+    uint32_t uVar2;
+    int64_t iVar3;
+    char *pcVar4;
+    uint8_t uVar5;
+    int32_t iVar6;
+    int32_t iVar7;
+    bool bVar8;
+    
+    iVar3 = -1;
+    pcVar4 = in_RAX;
+    do {
+        uVar2 = (uint32_t)iVar3;
+        if (iVar3 == 0) break;
+        iVar3 = iVar3 + -1;
+        uVar2 = (uint32_t)iVar3;
+        cVar1 = *pcVar4;
+        pcVar4 = pcVar4 + 1;
+    } while (cVar1 != '\0');
+    uVar5 = 0x50;
+    iVar6 = 0;
+    while (iVar6 < 0x539) {
+        iVar7 = 0;
+        while (iVar7 < (int32_t)(~uVar2 - 1)) {
+            in_RAX[iVar7] = in_RAX[iVar7] ^ uVar5;
+            uVar5 = uVar5 ^ in_RAX[iVar7];
+            iVar7 = iVar7 + 1;
+        }
+        iVar6 = iVar6 + 1;
+    }
+    bVar8 = true;
+    iVar6 = 0;
+    while (iVar6 < (int32_t)(~uVar2 - 1)) {
+        if (bVar8 == false) {
+            bVar8 = false;
+        } else {
+            bVar8 = in_RAX[iVar6] == *(char *)((int64_t)iVar6 + 0x4008eb);
+        }
+        iVar6 = iVar6 + 1;
+    }
+    return (uint64_t)bVar8;
+}
